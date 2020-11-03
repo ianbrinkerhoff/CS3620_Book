@@ -11,4 +11,4 @@ class Book(models.Model):
     category = models.CharField(max_length=200, default='unknown')
     description = models.CharField(max_length=500)
     rating = models.FloatField()
-    image = models.ImageField(upload_to='images', default='images/none/noimg.jpg')
+    image = models.CharField(max_length=500, default="https://www.edmundsgovtech.com/wp-content/uploads/2020/01/default-picture_0_0.png")

@@ -1,3 +1,87 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="header">
+<nav class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Book Library</a>
+
+
+    <form class="form-inline mt-2 mt-md-0" action="" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Library..." aria-label="Search" name="book_name">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+</nav>
+</div>
+<div class="meat">
+
+
+
+
 {% for book_item in book_object %}
-    {{ book_item.name }}
+<div>
+    <h2 class="title">{{ book_item.name }} - <b>{{ book_item.rating }}</b></h2>
+    <img src="{{ book_item.image }}" class="card" height="300px">
+    <p class="cat">{{ book_item.category }}</p>
+    <p class="desc">{{ book_item.description }}</p>
+</div>
+    <br>
 {% endfor %}
+
+</div>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">
+            {% if book_object.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ book_object.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            Page: {{ book_object.number }} of {{ book_object.paginator.num_pages }}
+
+            {% if book_object.has_next %}
+            <a href="?page={{ book_object.next_page_number }}">Next</a>
+            <a href="?page={{ book_object.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </span>
+    </div>
+</footer>
+
+</body>
+
+<style>
+
+    body {
+    text-align: center;
+    display: block;
+    }
+
+    .cat {
+    margin: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    }
+
+    img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    a {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+    font-size: 20px;
+    padding: 5px;
+    color: black;
+    background-color: lightgray;
+    }
+
+
+</style>
