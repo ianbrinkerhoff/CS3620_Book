@@ -12,5 +12,3 @@ class Book(models.Model):
     description = models.CharField(max_length=500)
     rating = models.FloatField()
     image = models.ImageField(upload_to='images', default='images/none/noimg.jpg')
-
-
